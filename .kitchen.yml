@@ -49,3 +49,13 @@ suites:
       provider: vagrant
     rs-base:
       collectd_server: sketchy1-66.rightscale.com
+- name: xfs_swap
+  run_list:
+  - recipe[xfs]
+  - recipe[ephemeral_lvm::default]
+  - recipe[rs-base::swap]
+  attributes:
+    rs-base:
+      collectd_server: sketchy1-66.rightscale.com
+    ephemeral_lvm:
+      filesystem: xfs
