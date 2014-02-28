@@ -31,7 +31,7 @@ module EphemeralLvmTest
     def self.create_loop_devices(devices)
       Array(devices).each do |device|
         num = device.slice(/\d+/)
-        shell_out!("dd if=/dev/zero of=/vfile#{num} bs=1024 count=65536")
+        shell_out!("dd if=/dev/zero of=/vfile#{num} bs=1024 count=1310720")
         shell_out!("losetup #{device} /vfile#{num}")
       end
     end
