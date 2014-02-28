@@ -52,10 +52,16 @@ suites:
 - name: xfs_swap
   run_list:
   - recipe[xfs]
+  - recipe[fake]
   - recipe[ephemeral_lvm::default]
   - recipe[rs-base::swap]
   attributes:
+    cloud:
+      provider: vagrant
     rs-base:
       collectd_server: sketchy1-66.rightscale.com
     ephemeral_lvm:
       filesystem: xfs
+    vagrant:
+      block_device_mapping_ephemeral0: loop0
+      block_device_mapping_ephemeral1: loop1
